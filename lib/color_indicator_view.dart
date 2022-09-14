@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:algolia_devcon_workshop/provided/product.dart';
+
+import 'product.dart';
 
 class ColorIndicatorView extends StatelessWidget {
   const ColorIndicatorView({
@@ -27,8 +28,8 @@ class ColorIndicatorView extends StatelessWidget {
             ),
             image: isMultiColor
                 ? const DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage('assets/images/color_wheel.png'))
+                    fit: BoxFit.fill,
+                    image: AssetImage('assets/images/color_wheel.png'))
                 : null));
   }
 }

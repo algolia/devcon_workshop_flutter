@@ -1,8 +1,9 @@
-import 'package:algolia_devcon_workshop/product_repository.dart';
-import 'package:algolia_devcon_workshop/provided/selectable_facet_row.dart';
 import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'product_repository.dart';
+import 'selectable_facet_row.dart';
 
 class FiltersScreen extends StatefulWidget {
   const FiltersScreen({Key? key}) : super(key: key);

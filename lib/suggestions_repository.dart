@@ -1,7 +1,6 @@
-import 'package:algolia_devcon_workshop/provided/credentials.dart';
-import 'package:algolia_devcon_workshop/query_suggestion.dart';
-import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/material.dart';
+
+import 'query_suggestion.dart';
 
 class SuggestionsRepository {
   final searchTextController = TextEditingController();

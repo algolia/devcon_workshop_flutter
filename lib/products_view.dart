@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:algolia_devcon_workshop/provided/product.dart';
-import 'package:algolia_devcon_workshop/provided/section_header.dart';
-import 'package:algolia_devcon_workshop/provided/hits_list_view.dart';
-import 'package:algolia_devcon_workshop/provided/type_aliases.dart';
+
+import 'hits_list_view.dart';
+import 'product.dart';
+import 'section_header.dart';
+import 'type_aliases.dart';
 
 class ProductsView extends StatelessWidget {
   const ProductsView({
@@ -32,5 +33,4 @@ class ProductsView extends StatelessWidget {
       ],
     );
   }
-
 }

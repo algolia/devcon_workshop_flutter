@@ -1,5 +1,6 @@
-import 'package:algolia_devcon_workshop/provided/product.dart';
 import 'package:flutter/widgets.dart';
+
+import 'product.dart';
 
 typedef ProductsStream = Stream<List<Product>>;
 typedef ProductWidgetBuilder = Widget Function(

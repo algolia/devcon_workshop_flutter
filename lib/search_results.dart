@@ -1,13 +1,13 @@
-import 'package:algolia_devcon_workshop/paged_hits_grid_view.dart';
-import 'package:algolia_devcon_workshop/product_repository.dart';
-import 'package:algolia_devcon_workshop/provided/app_bar_view.dart';
-import 'package:algolia_devcon_workshop/provided/no_results_view.dart';
-import 'package:algolia_devcon_workshop/provided/search_results_header_view.dart';
-import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'app_bar_view.dart';
 import 'filters_screen.dart';
+import 'no_results_view.dart';
+import 'paged_hits_grid_view.dart';
+import 'product_repository.dart';
 import 'search_metadata.dart';
+import 'search_results_header_view.dart';
 
 class SearchResultsScreen extends StatefulWidget {
   const SearchResultsScreen({Key? key}) : super(key: key);

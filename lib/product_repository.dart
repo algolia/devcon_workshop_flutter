@@ -1,10 +1,10 @@
-import 'package:algolia_devcon_workshop/products_page.dart';
-import 'package:algolia_devcon_workshop/provided/credentials.dart';
-import 'package:algolia_devcon_workshop/provided/product.dart';
-import 'package:algolia_devcon_workshop/provided/type_aliases.dart';
-import 'package:algolia_devcon_workshop/search_metadata.dart';
 import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+
+import 'product.dart';
+import 'products_page.dart';
+import 'search_metadata.dart';
+import 'type_aliases.dart';
 
 class ProductRepository {
   final PagingController<int, Product> pagingController =

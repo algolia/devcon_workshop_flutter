@@ -15,15 +15,15 @@ class Product {
 
   Product(
       {this.objectID,
-        this.name,
-        this.image,
-        this.brand,
-        this.price,
-        this.reviews,
-        this.color,
-        this.images,
-        this.sizes,
-        this.description});
+      this.name,
+      this.image,
+      this.brand,
+      this.price,
+      this.reviews,
+      this.color,
+      this.images,
+      this.sizes,
+      this.description});
 
   static Product fromJson(Map<String, dynamic> json) {
     return Product(
@@ -56,10 +56,10 @@ class Price {
 
   Price(
       {this.currency,
-        this.value,
-        this.discountedValue,
-        this.discountLevel,
-        this.onSales});
+      this.value,
+      this.discountedValue,
+      this.discountLevel,
+      this.onSales});
 
   static Price fromJson(Map<String, dynamic> json) {
     return Price(

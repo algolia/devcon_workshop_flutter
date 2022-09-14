@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:algolia_devcon_workshop/provided/product.dart';
-import 'package:algolia_devcon_workshop/provided/type_aliases.dart';
+
+import 'product.dart';
+import 'type_aliases.dart';
 
 class HitsListView extends StatelessWidget {
   const HitsListView(
       {Key? key,
-        required this.productsStream,
-        required this.productWidget,
-        this.scrollDirection = Axis.vertical})
+      required this.productsStream,
+      required this.productWidget,
+      this.scrollDirection = Axis.vertical})
       : super(key: key);
 
   final Stream<List<Product>> productsStream;
@@ -36,4 +37,3 @@ class HitsListView extends StatelessWidget {
     );
   }
 }
-

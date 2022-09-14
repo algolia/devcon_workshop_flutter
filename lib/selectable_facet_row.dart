@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
+import 'package:flutter/material.dart';
 
 class SelectableFacetRow extends StatelessWidget {
   const SelectableFacetRow({Key? key, required this.selectableFacet})

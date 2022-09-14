@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
-import 'package:algolia_devcon_workshop/provided/product.dart';
-import 'package:algolia_devcon_workshop/provided/product_card_view.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+
+import 'product.dart';
+import 'product_card_view.dart';
 
 class PagedHitsGridView extends StatelessWidget {
   const PagedHitsGridView(
       {Key? key,
-        required this.pagingController,
-        this.onHitClick,
-        this.noItemsFound})
+      required this.pagingController,
+      this.onHitClick,
+      this.noItemsFound})
       : super(key: key);
 
   final PagingController<int, Product> pagingController;

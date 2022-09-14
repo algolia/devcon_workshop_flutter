@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:algolia_devcon_workshop/provided/product.dart';
-import 'package:algolia_devcon_workshop/provided/app_theme.dart';
-import 'package:algolia_devcon_workshop/provided/color_indicator_view.dart';
-import 'package:algolia_devcon_workshop/provided/rating_view.dart';
+
+import 'app_theme.dart';
+import 'color_indicator_view.dart';
+import 'product.dart';
+import 'rating_view.dart';
 
 class ProductCardView extends StatelessWidget {
   const ProductCardView(
       {Key? key,
-        required this.product,
-        this.imageAlignment = Alignment.bottomCenter,
-        this.onTap})
+      required this.product,
+      this.imageAlignment = Alignment.bottomCenter,
+      this.onTap})
       : super(key: key);
 
   final Product product;
@@ -22,7 +23,7 @@ class ProductCardView extends StatelessWidget {
         ? product.price?.discountedValue
         : product.price?.value;
     final crossedValue =
-    (product.price?.onSales ?? false) ? product.price?.value : null;
+        (product.price?.onSales ?? false) ? product.price?.value : null;
     return GestureDetector(
       onTap: () => onTap?.call(product.objectID!),
       child: SizedBox(

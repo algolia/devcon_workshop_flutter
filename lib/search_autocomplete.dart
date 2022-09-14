@@ -1,11 +1,12 @@
-import 'package:algolia_devcon_workshop/product_repository.dart';
-import 'package:algolia_devcon_workshop/query_suggestion.dart';
-import 'package:algolia_devcon_workshop/provided/search_header_view.dart';
-import 'package:algolia_devcon_workshop/search_results.dart';
-import 'package:algolia_devcon_workshop/provided/suggestion_row_view.dart';
-import 'package:algolia_devcon_workshop/suggestions_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'product_repository.dart';
+import 'query_suggestion.dart';
+import 'search_header_view.dart';
+import 'search_results.dart';
+import 'suggestion_row_view.dart';
+import 'suggestions_repository.dart';
 
 class SearchAutocomplete extends StatelessWidget {
   const SearchAutocomplete({Key? key}) : super(key: key);

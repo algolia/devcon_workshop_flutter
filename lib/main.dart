@@ -1,9 +1,10 @@
-import 'package:algolia_devcon_workshop/provided/app_theme.dart';
-import 'package:algolia_devcon_workshop/suggestions_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:algolia_devcon_workshop/home_page.dart';
 import 'package:provider/provider.dart';
+
+import 'app_theme.dart';
+import 'home_page.dart';
 import 'product_repository.dart';
+import 'suggestions_repository.dart';
 
 void main() {
   runApp(

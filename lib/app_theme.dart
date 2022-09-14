@@ -37,10 +37,8 @@ class AppTheme {
         ),
         textTheme: const TextTheme(
             subtitle2: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: neutralDark)),
+                fontSize: 14, fontWeight: FontWeight.w400, color: neutralDark)),
         textButtonTheme: TextButtonThemeData(
-            style: TextButton.styleFrom(primary: secondaryColor)));
+            style: TextButton.styleFrom(foregroundColor: secondaryColor)));
   }
 }
