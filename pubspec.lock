@@ -14,14 +14,14 @@ packages:
       name: algolia_helper
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.2"
+    version: "0.1.3"
   algolia_helper_flutter:
     dependency: "direct main"
     description:
       name: algolia_helper_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.2"
+    version: "0.1.3"
   async:
     dependency: transitive
     description:
