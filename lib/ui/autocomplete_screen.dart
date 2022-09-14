@@ -1,15 +1,15 @@
+import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'product_repository.dart';
-import 'query_suggestion.dart';
-import 'search_header_view.dart';
-import 'search_results.dart';
-import 'suggestion_row_view.dart';
-import 'suggestions_repository.dart';
+import '../data/product_repository.dart';
+import '../data/suggestions_repository.dart';
+import '../model/query_suggestion.dart';
+import 'app_theme.dart';
+import 'search_results_screen.dart';
 
-class SearchAutocomplete extends StatelessWidget {
-  const SearchAutocomplete({Key? key}) : super(key: key);
+class AutocompleteScreen extends StatelessWidget {
+  const AutocompleteScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -95,5 +95,68 @@ class SearchAutocomplete extends StatelessWidget {
         MaterialPageRoute(
           builder: (BuildContext context) => const SearchResultsScreen(),
         ));
+  }
+}
+
+class SearchHeaderView extends StatelessWidget {
+  const SearchHeaderView(
+      {Key? key,
+      required this.textEditingController,
+      required this.onSubmitted})
+      : super(key: key);
+
+  final TextEditingController textEditingController;
+  final void Function(String) onSubmitted;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: TextField(
+            autofocus: true,
+            decoration: const InputDecoration(
+              border: InputBorder.none,
+              hintText: 'Search products, articles, faq, ...',
+            ),
+            controller: textEditingController,
+            onSubmitted: onSubmitted,
+          ),
+        ),
+        if (textEditingController.text.isNotEmpty)
+          IconButton(
+            onPressed: textEditingController.clear,
+            icon: const Icon(Icons.clear),
+            color: AppTheme.darkBlue,
+          ),
+      ],
+    );
+  }
+}
+
+class SuggestionRowView extends StatelessWidget {
+  const SuggestionRowView({Key? key, required this.suggestion, this.onComplete})
+      : super(key: key);
+
+  final QuerySuggestion suggestion;
+  final Function(String)? onComplete;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(children: [
+      const Icon(Icons.search),
+      const SizedBox(
+        width: 10,
+      ),
+      RichText(
+          text: TextSpan(
+              style: const TextStyle(color: Colors.black),
+              children: suggestion.highlighted!.toInlineSpans())),
+      const Spacer(),
+      IconButton(
+        onPressed: () => onComplete?.call(suggestion.query),
+        icon: const Icon(Icons.north_west),
+      )
+    ]);
   }
 }

@@ -1,26 +1,26 @@
 import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-import 'product.dart';
-import 'products_page.dart';
-import 'search_metadata.dart';
-import 'type_aliases.dart';
+import '../credentials.dart';
+import '../model/product.dart';
+import '../model/search_metadata.dart';
+import '../model/type_aliases.dart';
 
 class ProductRepository {
   final PagingController<int, Product> pagingController =
       PagingController(firstPageKey: 0);
 
-  // TODO(1.1): add shoes searcher (query: shoes)
-  // TODO(1.2): seasonal products searcher (rules: 'home-spring-summer-2021')
+  // TODO(1.1): add `_shoesSearcher` searcher (query: shoes)
+  // TODO(1.2): add `_seasonalProductsSearcher` searcher (rules: 'home-spring-summer-2021')
 
-  // TODO(3.1): add hits searcher
+  // TODO(3.1): add `_productsSearcher` searcher
 
-  // TODO(4.1): add filter state
-  // TODO(4.2): add brand facet list
+  // TODO(4.3): add filter state
+  // TODO(4.4): add brand facet list
 
   ProductRepository() {
-    // TODO(4.3): apply disjunctive facets (brand) to hits searcher
-    // TODO(4.4): connect hits searcher and filter state
+    // TODO(4.5): apply disjunctive facets (brand) to hits searcher
+    // TODO(4.6): connect hits searcher and filter state
 
     pagingController.addPageRequestListener((pageKey) {
       // TODO(3.2): request a new page
@@ -54,13 +54,13 @@ class ProductRepository {
   Stream<SearchMetadata> get searchMetadata => const Stream.empty();
 
   /// Get the name of currently selected index
-  // TODO(4.5): stream of selected index name
+  // TODO(4.1): stream of selected index name
   Stream<String> get selectedIndexName => const Stream.empty();
 
   /// Update the name of the index to target
   void selectIndexName(String indexName) {
     pagingController.refresh();
-    // TODO(4.6): update search state with new index
+    // TODO(4.2): update search state with new index
   }
 
   /// Get stream of list of brand facets

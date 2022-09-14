@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_theme.dart';
+import '../app_theme.dart';
 
 class SearchResultsHeaderView extends StatelessWidget
     implements PreferredSizeWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'query_suggestion.dart';
+import '../model/query_suggestion.dart';
 
 class SuggestionsRepository {
   final searchTextController = TextEditingController();

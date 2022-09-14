@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class SearchPanel extends StatefulWidget implements PreferredSizeWidget {
-  const SearchPanel({Key? key, this.onSearch}) : super(key: key);
+class SearchPanelView extends StatefulWidget implements PreferredSizeWidget {
+  const SearchPanelView({Key? key, this.onSearch}) : super(key: key);
 
   final VoidCallback? onSearch;
 
   @override
-  State<SearchPanel> createState() => _SearchPanelState();
+  State<SearchPanelView> createState() => _SearchPanelViewState();
 
   @override
   Size get preferredSize => const Size(double.maxFinite, 44);
 }
 
-class _SearchPanelState extends State<SearchPanel> {
+class _SearchPanelViewState extends State<SearchPanelView> {
   @override
   PreferredSize build(BuildContext context) => PreferredSize(
         preferredSize: const Size.fromHeight(48.0),
