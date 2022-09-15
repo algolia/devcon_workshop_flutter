@@ -6,8 +6,9 @@ class QuerySuggestion {
   String query;
   HighlightedString? highlighted;
 
-  static QuerySuggestion fromHit(Hit hit) {
-    final highlighted = hit.getHighlightedString('query', inverted: true);
+  static QuerySuggestion fromJson(Hit hit) {
+    /// TODO(2.4): set inverted to true
+    final highlighted = hit.getHighlightedString('query');
     return QuerySuggestion(hit["query"], highlighted);
   }
 

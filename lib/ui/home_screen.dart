@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../data/product_repository.dart';
+import '../data/products_repository.dart';
 import '../model/product.dart';
 import 'app_theme.dart';
 import 'autocomplete_screen.dart';
@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final productRepository = context.read<ProductRepository>();
+    final productRepository = context.read<ProductsRepository>();
     return Scaffold(
       appBar: AlgoliaAppBar(
         bottom: SearchPanelView(

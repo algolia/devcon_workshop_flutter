@@ -2,7 +2,7 @@ import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../data/product_repository.dart';
+import '../data/search_repository.dart';
 
 class FiltersScreen extends StatefulWidget {
   const FiltersScreen({Key? key}) : super(key: key);
@@ -81,7 +81,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
           if (!_isActive(FiltersSection.sort))
             StreamBuilder<String>(
-                stream: context.read<ProductRepository>().selectedIndexName,
+                stream: context.read<SearchRepository>().selectedIndexName,
                 builder: (context, snapshot) => Text(snapshot.hasData
                     ? '${_indicesTitles[snapshot.data!]}'
                     : '')),
@@ -91,7 +91,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
       null);
 
   Widget _sortSelector(BuildContext context) => StreamBuilder<String>(
-      stream: context.read<ProductRepository>().selectedIndexName,
+      stream: context.read<SearchRepository>().selectedIndexName,
       builder: (context, snapshot) {
         final selectedIndexName = snapshot.data;
         return SliverFixedExtentList(
@@ -99,9 +99,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 final item = _indicesTitles.entries.toList()[index];
-                final productRepository = context.read<ProductRepository>();
+                final searchRepository = context.read<SearchRepository>();
                 return InkWell(
-                    onTap: () => productRepository.selectIndexName(item.key),
+                    onTap: () => searchRepository.selectIndexName(item.key),
                     child: Text(
                       item.value,
                       style: TextStyle(
@@ -118,12 +118,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
       const Text('Brand',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
       FiltersSection.brand,
-      context.read<ProductRepository>().brandFacets);
+      context.read<SearchRepository>().brandFacets);
 
   Widget _brandSelector(BuildContext context) {
-    final productRepository = context.read<ProductRepository>();
+    final searchRepository = context.read<SearchRepository>();
     return StreamBuilder<List<SelectableFacet>>(
-        stream: productRepository.brandFacets,
+        stream: searchRepository.brandFacets,
         builder: (context, snapshot) {
           final facets = snapshot.data ?? [];
           return SliverFixedExtentList(
@@ -136,7 +136,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       selectableFacet: facet,
                     ),
                     onTap: () =>
-                        productRepository.toggleBrand(facet.item.value),
+                        searchRepository.toggleBrand(facet.item.value),
                   );
                 },
                 childCount: facets.length,

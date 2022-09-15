@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 
-import '../data/product_repository.dart';
+import '../data/search_repository.dart';
 import '../model/product.dart';
 import '../model/search_metadata.dart';
 import 'filters_screen.dart';
@@ -22,21 +22,21 @@ class SearchResultsScreenState extends State<SearchResultsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final productRepository = context.read<ProductRepository>();
+    final searchRepository = context.read<SearchRepository>();
     return Scaffold(
       key: _key,
       appBar: const AlgoliaAppBar(),
       body: Column(
         children: [
           StreamBuilder<SearchMetadata>(
-              stream: productRepository.searchMetadata,
+              stream: searchRepository.searchMetadata,
               builder: (context, snapshot) {
                 return SearchResultsHeaderView(
                     query: snapshot.data?.query ?? '',
                     resultsCount: snapshot.data?.nbHits ?? 0,
                     filtersButtonTapped: _key.currentState?.openEndDrawer,
                     backButtonTapped: () {
-                      productRepository.clearFilters();
+                      searchRepository.clearFilters();
                       Navigator.pop(context);
                     });
               }),
@@ -44,7 +44,7 @@ class SearchResultsScreenState extends State<SearchResultsScreen> {
             child: Padding(
               padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
               child: PagedHitsGridView(
-                  pagingController: productRepository.pagingController,
+                  pagingController: searchRepository.pagingController,
                   onHitClick: (objectID) {},
                   noItemsFound: (_) => const NoResultsView()),
             ),

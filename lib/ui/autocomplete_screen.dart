@@ -1,8 +1,9 @@
+import 'package:algolia_devcon_workshop/data/search_repository.dart';
 import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../data/product_repository.dart';
+import '../data/products_repository.dart';
 import '../data/suggestions_repository.dart';
 import '../model/query_suggestion.dart';
 import 'app_theme.dart';
@@ -89,7 +90,7 @@ class AutocompleteScreen extends StatelessWidget {
   }
 
   void _onSubmitSearch(BuildContext context, String query) {
-    context.read<ProductRepository>().search(query);
+    context.read<SearchRepository>().search(query);
     Navigator.push(
         context,
         MaterialPageRoute(

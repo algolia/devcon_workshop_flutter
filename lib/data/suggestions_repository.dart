@@ -1,3 +1,5 @@
+import 'package:algolia_devcon_workshop/credentials.dart';
+import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/material.dart';
 
 import '../model/query_suggestion.dart';
