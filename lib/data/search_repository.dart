@@ -9,7 +9,11 @@ class SearchRepository {
   final PagingController<int, Product> pagingController =
       PagingController(firstPageKey: 0);
 
-  // TODO(3.1): add `_productsSearcher` searcher
+  final _productsSearcher = HitsSearcher(
+    applicationID: Credentials.applicationID,
+    apiKey: Credentials.apiKey,
+    indexName: Credentials.hitsIndex,
+  );
 
   // TODO(4.3): add filter state
   // TODO(4.4): add brand facet list
@@ -18,7 +22,7 @@ class SearchRepository {
     // TODO(4.5): connect hits searcher and filter state
 
     pagingController.addPageRequestListener((pageKey) {
-      // TODO(3.5): request a new page
+      _productsSearcher.applyState((state) => state.copyWith(page: pageKey));
     });
 
     _searchPage.listen((page) {
@@ -31,16 +35,16 @@ class SearchRepository {
   /// Get products list by query.
   void search(String query) {
     pagingController.refresh();
-    // TODO(3.2): run search with 'query'
+    _productsSearcher.query(query);
   }
 
   /// Get stream of latest search result
-  // TODO(3.3): get products search metadata stream
-  Stream<SearchMetadata> get searchMetadata => const Stream.empty();
+  Stream<SearchMetadata> get searchMetadata =>
+      _productsSearcher.responses.map(SearchMetadata.fromResponse);
 
   /// Get stream of latest search page
-  // TODO(3.4): get products search results as pages stream
-  Stream<ProductsPage> get _searchPage => const Stream.empty();
+  Stream<ProductsPage> get _searchPage =>
+      _productsSearcher.responses.map(ProductsPage.fromResponse);
 
   /// Get the name of currently selected index
   // TODO(4.1): stream of selected index name
