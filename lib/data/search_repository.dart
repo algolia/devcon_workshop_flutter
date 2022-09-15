@@ -15,11 +15,15 @@ class SearchRepository {
     indexName: Credentials.hitsIndex,
   );
 
-  // TODO(4.3): add filter state
-  // TODO(4.4): add brand facet list
+  final _filterState = FilterState();
+
+  late final _brandFacetList = FacetList(
+      searcher: _productsSearcher,
+      filterState: _filterState,
+      attribute: 'brand');
 
   SearchRepository() {
-    // TODO(4.5): connect hits searcher and filter state
+    _productsSearcher.connectFilterState(_filterState);
 
     pagingController.addPageRequestListener((pageKey) {
       _productsSearcher.applyState((state) => state.copyWith(page: pageKey));
@@ -47,28 +51,28 @@ class SearchRepository {
       _productsSearcher.responses.map(ProductsPage.fromResponse);
 
   /// Get the name of currently selected index
-  // TODO(4.1): stream of selected index name
-  Stream<String> get selectedIndexName => const Stream.empty();
+  Stream<String> get selectedIndexName =>
+      _productsSearcher.state.map((state) => state.indexName);
 
   /// Update the name of the index to target
   void selectIndexName(String indexName) {
     pagingController.refresh();
-    // TODO(4.2): update search state with new index
+    _productsSearcher
+        .applyState((state) => state.copyWith(indexName: indexName));
   }
 
   /// Get stream of list of brand facets
-  // TODO(4.6): stream of brand facets
-  Stream<List<SelectableFacet>> get brandFacets => const Stream.empty();
+  Stream<List<SelectableFacet>> get brandFacets => _brandFacetList.facets;
 
   /// Toggle selection of a brand facet
   void toggleBrand(String brand) {
     pagingController.refresh();
-    // TODO(4.7): toggle facet list with 'brand'
+    _brandFacetList.toggle(brand);
   }
 
   /// Clear all filters
   void clearFilters() {
     pagingController.refresh();
-    // TODO(4.8): clear all filters
+    _filterState.clear();
   }
 }
