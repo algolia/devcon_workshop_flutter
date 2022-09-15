@@ -7,17 +7,22 @@ import '../model/query_suggestion.dart';
 class SuggestionsRepository {
   final searchTextController = TextEditingController();
 
-  // TODO(2.1): add suggestions searcher
+  final _suggestionsSearcher = HitsSearcher(
+    applicationID: Credentials.applicationID,
+    apiKey: Credentials.apiKey,
+    indexName: Credentials.suggestionsIndex,
+  );
 
   SuggestionsRepository() {
     searchTextController.addListener(() {
-      // TODO(2.2): run search request on text change
+      _suggestionsSearcher.query(searchTextController.text);
     });
   }
 
   /// Get query suggestions stream
-  // TODO(2.3): get search suggestions stream
-  Stream<List<QuerySuggestion>> get suggestions => const Stream.empty();
+  Stream<List<QuerySuggestion>> get suggestions =>
+      _suggestionsSearcher.responses.map((response) =>
+          response.hits.map(QuerySuggestion.fromJson).toList());
 
   /// Replace textController input field with suggestion
   void completeSuggestion(String suggestion) {
